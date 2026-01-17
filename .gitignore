@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Termux / Linux temp
+*.log
+*.tmp
+
+# Node (agar future me use karo)
+node_modules/
+
+# Editor files
+.vscode/
+.idea/
+
+# Build / cache
+dist/
+build/
+.cache/

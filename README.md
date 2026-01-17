@@ -1,3 +1,4 @@
+# 🎮 **KRISHNA THAKUR** 🚀
 # Sky Fly Game 🚀
 
 Sky Fly Game ek simple browser game hai jisme player ek flying character ko control karta hai aur obstacles avoid karke high score banata hai.  

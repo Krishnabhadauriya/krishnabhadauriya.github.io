@@ -38,18 +38,17 @@ h1{
 }
   /* ===== START SCREEN ===== */
 #startScreen {
-  position: absolute;
+  position: fixed;       /* absolute → fixed */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("assets/start-bg.png") no-repeat center center / cover;
+  z-index: 10;           /* canvas se upar */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 #gameTitle {
   width: 320px;      /* desktop */
   max-width: 85%;    /* mobile */

@@ -1,13 +1,20 @@
-let highScore = localStorage.getItem("skyFlyHighScore") || 0;
 let gameStarted = false;
-
+let highScore = localStorage.getItem("skyFlyHighScore") || 0;
 // ===== CONFIG =====
 const HITBOX_MARGIN = 80;
 
 // ===== ELEMENTS =====
-const startScreen = document.getElementById("startScreen");
 const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
 const bgMusic = document.getElementById("bgMusic");
+startBtn.addEventListener("click", startGame);
+startBtn.addEventListener("touchstart", startGame);
+
+function startGame() {
+    startScreen.style.display = "none";
+    gameStarted = true;
+    requestAnimationFrame(gameLoop);
+}
 // ===== CANVAS =====
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");

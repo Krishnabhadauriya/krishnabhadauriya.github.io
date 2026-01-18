@@ -22,10 +22,7 @@
   padding: 8px 0;
   z-index: 10;
 }
-canvas {
-  touch-action: none;
-}
-  /* Game ke start hone ke baad header hide ho jaye */
+/* Game ke start hone ke baad header hide ho jaye */
 #header.hidden {
   display: none;
 }

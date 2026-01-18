@@ -17,7 +17,10 @@ function resizeCanvas() {
   canvas.height = window.innerHeight  // header + footer space
  esizeCanvas();
 window.addEventListener("resize", resizeCanvas);
-
+const dpr = window.devicePixelRatio || 1;
+canvas.width = window.innerWidth * dpr;
+canvas.height = window.innerHeight * dpr;
+ctx.scale(dpr, dpr);
 // ===== IMAGES =====
 const bg = new Image();
 bg.src = "assets/bg.png";

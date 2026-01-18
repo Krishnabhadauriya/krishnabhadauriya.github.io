@@ -15,6 +15,10 @@ const ctx = canvas.getContext("2d");
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight  // header + footer space
+  const dpr = window.devicePixelRatio || 1;
+canvas.width = window.innerWidth * dpr;
+canvas.height = window.innerHeight * dpr;
+ctx.scale(dpr, dpr);
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);

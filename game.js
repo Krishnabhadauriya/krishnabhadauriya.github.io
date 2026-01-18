@@ -1,35 +1,28 @@
-let gameStarted = false;
 let highScore = localStorage.getItem("skyFlyHighScore") || 0;
+let gameStarted = false;
+
 // ===== CONFIG =====
 const HITBOX_MARGIN = 80;
 
 // ===== ELEMENTS =====
-const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
 const bgMusic = document.getElementById("bgMusic");
-startBtn.addEventListener("click", startGame);
-startBtn.addEventListener("touchstart", startGame);
-
-function startGame() {
-    startScreen.style.display = "none";
-    gameStarted = true;
-    requestAnimationFrame(gameLoop);
-}
 // ===== CANVAS =====
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight  // header + footer space
   const dpr = window.devicePixelRatio || 1;
-  canvas.width = window.innerWidth * dpr;
-  canvas.height = window.innerHeight * dpr;
-  ctx.scale(dpr, dpr);
-}
-window.addEventListener("resize", resizeCanvas);
-const dpr = window.devicePixelRatio || 1;
 canvas.width = window.innerWidth * dpr;
 canvas.height = window.innerHeight * dpr;
 ctx.scale(dpr, dpr);
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
 // ===== IMAGES =====
 const bg = new Image();
 bg.src = "assets/bg.png";
@@ -223,22 +216,17 @@ function endGame() {
 }
 
 // ===== START BUTTON =====
-startBtn.addEventListener("click", startGame);
-startBtn.addEventListener("touchstart", startGame);
+startBtn.addEventListener("click", () => {
+  startScreen.style.display = "none";
+  canvas.style.display = "block";
 
-function startGame() {
-    startScreen.style.display = "none";
-    canvas.style.display = "block";
-    resizeCanvas();
+  resizeCanvas();   // canvas size correct kare
 
-    // BG MUSIC START
-    bgMusic.volume = 0.3;
-    bgMusic.play().catch(err => console.log("BG Music blocked: ", err));
-
-    // GAME START
-    gameStarted = true;
-    requestAnimationFrame(gameLoop);
-}
+  // BG MUSIC START
+  bgMusic.volume = 0.3;
+  bgMusic.play().then(() => {
+    console.log("BG Music playing");
+  }).catch(err => {
     console.log("BG Music blocked: ", err);
   });
 
